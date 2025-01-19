@@ -1,70 +1,63 @@
-import React from "react";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Header } from './components/Header';
+import { NAVIGATION_ITEMS, SOCIAL_LINKS } from './constants/navigation';
 
-const Home: React.FC = () => {
+export const metadata: Metadata = {
+  title: "Airi's Dev Nook",
+  description: 'Welcome to my personal portfolio and blog',
+};
+
+export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="absolute top-0 w-full z-10">
-        <nav className="flex justify-between items-center px-8 py-4">
-          <div className="text-3xl font-bold text-white">Airi’s Dev Nook</div>
-          <ul className="flex space-x-6">
-            {["About", "Portfolio", "Blog", "Contact", "Book"].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="text-white text-lg hover:text-[#FFD54F] transition duration-300"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       {/* Right-side Floating Buttons */}
       <div className="fixed top-1/2 right-4 transform -translate-y-1/2 space-y-4 z-50">
-        {[
-          { href: "mailto:your_email@gmail.com", icon: "📧", label: "Gmail" },
-          { href: "https://github.com/your_github", icon: "🐙", label: "GitHub" },
-          { href: "https://zenn.dev/your_zenn", icon: "📘", label: "Zenn" },
-        ].map((link, index) => (
-          <a
-            key={index}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg hover:bg-[#FFD54F] hover:text-white transition duration-300"
-            title={link.label}
-          >
-            <span className="text-xl">{link.icon}</span>
-          </a>
-        ))}
+        {SOCIAL_LINKS.map((link, index) => {
+          const Icon = link.icon;
+          return (
+            <Link
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg hover:bg-[#FFD54F] hover:text-white transition duration-300 group"
+              title={link.label}
+            >
+              <Icon 
+                className="text-2xl group-hover:text-white transition-colors" 
+              />
+            </Link>
+          );
+        })}
       </div>
 
       {/* Hero Section */}
-      <section
-        className="relative flex items-center justify-center min-h-screen text-center"
-        style={{
-          backgroundImage: "url('/background.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div> {/* 暗いオーバーレイ */}
+      <section className="relative flex items-center justify-center min-h-screen text-center">
+        <Image
+          src="/background.jpg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative z-10">
           <h1 className="text-5xl font-bold text-white mb-8">
-          Airi’s Dev Nook
+            Airi&apos;s Dev Nook
           </h1>
           <div className="flex space-x-6">
-            {["About Me", "Portfolio", "Blog", "Contact Me", "Book"].map((item, index) => (
-              <a
-                key={index}
-                href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+            {NAVIGATION_ITEMS.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
                 className="text-white text-lg px-6 py-3 border border-white rounded-lg hover:bg-white hover:text-black transition duration-300"
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>
@@ -123,6 +116,4 @@ const Home: React.FC = () => {
       </footer>
     </div>
   );
-};
-
-export default Home;
+}
