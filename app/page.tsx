@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { Header } from './components/Header';
 import { NAVIGATION_ITEMS, SOCIAL_LINKS } from './constants/navigation';
 import { FloatingButtons } from './components/FloatingButtons';
+import { metadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: "Airi's Dev Nook",
-  description: 'Welcome to my personal portfolio and blog',
-};
+/* メタデータ */
+export { metadata };
 
+/* ホームページ: top page */
 export default function Home() {
   return (
     <div className="min-h-screen">
