@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { NAVIGATION_ITEMS } from '../constants/navigation';
 
+/**
+ * ヘッダー
+ * ナビゲーションバー
+ */
 export const Header = () => {
   return (
     <header className="absolute top-0 w-full z-10">

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from './components/Header';
 import { NAVIGATION_ITEMS, SOCIAL_LINKS } from './constants/navigation';
+import { FloatingButtons } from './components/FloatingButtons';
 
 export const metadata: Metadata = {
   title: "Airi's Dev Nook",
@@ -13,37 +14,9 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-
-      {/* Right-side Floating Buttons */}
-      <div className="fixed top-1/2 right-4 transform -translate-y-1/2 space-y-4 z-50">
-        {SOCIAL_LINKS.map((link, index) => {
-          const Icon = link.icon;
-          return (
-            <Link
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg hover:bg-[#FFD54F] hover:text-white transition duration-300 group"
-              title={link.label}
-            >
-              <Icon 
-                className="text-2xl group-hover:text-white transition-colors" 
-              />
-            </Link>
-          );
-        })}
-      </div>
-
+      <FloatingButtons />
       {/* Hero Section */}
       <section className="relative flex items-center justify-center min-h-screen text-center">
-        <Image
-          src="/background.jpg"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative z-10">
           <h1 className="text-5xl font-bold text-white mb-8">
