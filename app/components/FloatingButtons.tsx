@@ -3,7 +3,6 @@ import { SOCIAL_LINKS } from "../constants/navigation";
 
 /**
  * ソーシャルリンクのフローティングボタン
- * (常にページの右に配置されるボタン)
  */
 export const FloatingButtons = () => {
   return (

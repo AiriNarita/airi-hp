@@ -35,7 +35,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Placeholder Sections */}
       <section id="about" className="py-20 px-8 bg-[#F9F9F9]">
         <h2 className="text-3xl font-bold text-center mb-8 text-[#4FC3F7]">
