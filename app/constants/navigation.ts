@@ -7,7 +7,7 @@ import { SiZenn } from "react-icons/si";
  * ラベル、リンク先の設定
  */
 export const NAVIGATION_ITEMS = [
-  { label: "About", href: "#about" },
+  { label: "About Me", href: "#about" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
