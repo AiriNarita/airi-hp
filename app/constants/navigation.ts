@@ -11,7 +11,7 @@ export const NAVIGATION_ITEMS = [
   { label: "Portfolio", href: "#portfolio" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
-  { label: "Book", href: "#book" }
+  { label: "Book Shelf", href: "#book" }
 ];
 
 /**
