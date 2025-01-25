@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NAVIGATION_ITEMS } from '../constants/navigation';
+import { NAVIGATION_ITEMS } from './constants/navigation';
 
 /**
  * ヘッダー
