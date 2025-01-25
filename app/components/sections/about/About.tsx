@@ -1,5 +1,6 @@
 import { styles } from "@/app/styles/common";
-import { AboutDetail } from "./AoutDetail";
+import Button from "../../parts/Botton";
+import { RiUserHeartLine } from "react-icons/ri";
 
 export const About = () => {
     return <>
@@ -9,6 +10,17 @@ export const About = () => {
         <p className={styles.paragraph}>
           このセクションには自己紹介を書きます。
         </p>
-        <AboutDetail />
+        <div className="flex justify-center">
+        <Button 
+        href="/about"
+        variant="secondary"
+        className="mt-4 w-52"
+        icon={RiUserHeartLine}
+        target="_blank"
+        rel="noopener noreferrer"
+        >
+          Details
+        </Button>
+        </div>  
     </>
 };
