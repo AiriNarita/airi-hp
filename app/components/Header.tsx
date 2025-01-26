@@ -9,7 +9,9 @@ export const Header = () => {
   return (
     <header className="absolute top-0 w-full z-10">
       <nav className="flex justify-between items-center px-8 py-4">
-        <div className="text-3xl font-bold text-white">Airi&apos;s Dev Nook</div>
+        <a href="/">
+          <div className="text-3xl font-bold text-white">Airi&apos;s Dev Nook</div> 
+        </a>
         <ul className="flex space-x-6">
           {NAVIGATION_ITEMS.map((item: { label: string; href: string }) => (
             <li key={item.label}>
