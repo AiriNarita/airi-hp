@@ -2,8 +2,7 @@ import { styles } from '@/app/styles/common';
 
 export const AboutDetail = () => {
   return (
-    <main className="container mx-auto px-4 py-20">
-      <div className={`${styles.section.base} ${styles.section.white}`}>
+      <div className={`${styles.section.base} ${styles.section.base}`}>
         <h1 className={`${styles.heading.base} ${styles.heading.blue} mb-12`}>
           About Me... My name is...
         </h1>
@@ -44,6 +43,5 @@ export const AboutDetail = () => {
           </div>
         </div>
       </div>
-    </main>
   );
 }; 
