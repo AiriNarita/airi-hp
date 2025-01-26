@@ -10,10 +10,7 @@ export { metadata };
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Header />
-      <FloatingButtons />
       <Section />
-      <Footer />
     </div>
   );
 }
