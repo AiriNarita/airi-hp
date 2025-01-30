@@ -1,3 +1,4 @@
+import Button from "../parts/Botton"
 
 export const Blog = () => {
     return <>
@@ -7,5 +8,8 @@ export const Blog = () => {
         <p className="text-center text-gray-600 max-w-4xl mx-auto">
           技術ブログのリンクを表示します。
         </p>
+        <Button href="/blog" label="Blog">
+          <span>Blog</span>
+        </Button>
     </>
 }
