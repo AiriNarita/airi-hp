@@ -1,47 +1,103 @@
 import { styles } from '@/app/styles/common';
+import Image from 'next/image';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
 
 export const AboutDetail = () => {
-  return (
-      <div className={`${styles.section.base} ${styles.section.base}`}>
-        <h1 className={`${styles.heading.base} ${styles.heading.blue} mb-12`}>
-          About Me... My name is...
-        </h1>
-        
-        {/* プロフィール情報 */}
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Profile</h2>
-            <p className="text-gray-600 leading-relaxed">
-              ここにプロフィール文を記載します...
+return <>
+    <main className="container mx-auto pt-20 pb-20">
+      <div className="relative bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm">
+        {/* プロフィールセクション */}
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+          <div className="w-48 h-48 relative">
+            <Image
+              src="/images/profile.jpg"  // プロフィール画像のパスを指定
+              alt="Profile"
+              width={192}
+              height={192}
+              className="rounded-full border-4 border-[#FFD54F]"
+            />
+          </div>
+          <div className="text-center md:text-left">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Airi&apos;s Portfolio
+            </h1>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
+              フロントエンド開発者として活動しています。
+              React、Next.js、TypeScriptを使用した開発が得意です。
+              ユーザーフレンドリーなUIの作成を心がけています。
             </p>
-          </div>
-
-          {/* スキルセクション */}
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Skills</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* スキルアイテム */}
-              <div className="p-4 border rounded-lg">
-                <h3 className="font-bold text-gray-700">Frontend</h3>
-                <p className="text-gray-600">React, Next.js, TypeScript...</p>
-              </div>
-              {/* 他のスキルアイテムも同様に */}
+            <div className="flex gap-4 mt-6 justify-center md:justify-start">
+              <a href="https://github.com/yourusername" 
+                 className="text-white hover:text-[#FFD54F] text-2xl transition-colors">
+                <FaGithub />
+              </a>
+              <a href="https://twitter.com/yourusername"
+                 className="text-white hover:text-[#FFD54F] text-2xl transition-colors">
+                <FaTwitter />
+              </a>
             </div>
           </div>
+        </div>
 
-          {/* 経歴セクション */}
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Experience</h2>
-            <div className="space-y-4">
-              {/* 経歴アイテム */}
-              <div className="border-l-4 border-blue-400 pl-4">
-                <h3 className="font-bold text-gray-700">2023 - Present</h3>
-                <p className="text-gray-600">職歴や経験を記載...</p>
+        {/* スキルセクション */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6 border-b border-[#FFD54F] pb-2">
+            Skills
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Frontend', skills: ['React', 'Next.js', 'TypeScript'] },
+              { title: 'Design', skills: ['Figma', 'Tailwind CSS'] },
+              { title: 'Others', skills: ['Git', 'AWS'] },
+            ].map((category) => (
+              <div key={category.title} 
+                   className="bg-gray-700/50 p-6 rounded-xl backdrop-blur-sm">
+                <h3 className="text-xl font-bold text-[#FFD54F] mb-4">
+                  {category.title}
+                </h3>
+                <ul className="space-y-2">
+                  {category.skills.map((skill) => (
+                    <li key={skill} className="text-gray-300">
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              {/* 他の経歴アイテムも同様に */}
-            </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 経歴セクション */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6 border-b border-[#FFD54F] pb-2">
+            Experience
+          </h2>
+          <div className="space-y-6">
+            {[
+              {
+                period: '2023 - Present',
+                title: 'フロントエンド開発者',
+                description: 'React、Next.jsを使用したWebアプリケーション開発',
+              },
+              // 他の経歴を追加
+            ].map((exp) => (
+              <div key={exp.period} 
+                   className="bg-gray-700/50 p-6 rounded-xl backdrop-blur-sm">
+                <div className="text-[#FFD54F] font-bold mb-2">
+                  {exp.period}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {exp.title}
+                </h3>
+                <p className="text-gray-300">
+                  {exp.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
   );
+  </main>
+  </>
 }; 
