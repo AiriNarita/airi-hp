@@ -19,10 +19,10 @@ return <>
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-4xl font-bold text-white mb-4">
-              Airi&apos;s Portfolio
+              Airi&apos;s profile
             </h1>
             <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
-              フロントエンド開発者として活動しています。
+              バックエンド開発者として活動しています。
               React、Next.js、TypeScriptを使用した開発が得意です。
               ユーザーフレンドリーなUIの作成を心がけています。
             </p>
@@ -46,8 +46,8 @@ return <>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
+              { title: 'Backend', skills: ['Figma', 'Tailwind CSS'] },
               { title: 'Frontend', skills: ['React', 'Next.js', 'TypeScript'] },
-              { title: 'Design', skills: ['Figma', 'Tailwind CSS'] },
               { title: 'Others', skills: ['Git', 'AWS'] },
             ].map((category) => (
               <div key={category.title} 
