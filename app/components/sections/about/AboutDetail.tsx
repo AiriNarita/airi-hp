@@ -22,9 +22,8 @@ return <>
               Airi&apos;s profile
             </h1>
             <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
-              バックエンド開発者として活動しています。
-              React、Next.js、TypeScriptを使用した開発が得意です。
-              ユーザーフレンドリーなUIの作成を心がけています。
+              バックエンド開発者として活動しています。<br />
+              あああああああああああああああああああああああ
             </p>
             <div className="flex gap-4 mt-6 justify-center md:justify-start">
               <a href="https://github.com/yourusername" 
