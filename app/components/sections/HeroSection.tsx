@@ -7,7 +7,8 @@ import { NAVIGATION_ITEMS } from '../constants/navigation';
  * ホームコンポーネント
  */
 export const HeroSection = () => {
-  return <div className={styles.section.base}>
+  return <>
+  <div className={styles.section.base}>
     <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative z-10">
           <h1 className="text-5xl font-bold text-white mb-8">
@@ -26,4 +27,5 @@ export const HeroSection = () => {
           </div>
         </div>
   </div>;
+  </>
 };
