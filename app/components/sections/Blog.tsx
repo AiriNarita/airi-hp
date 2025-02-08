@@ -1,3 +1,4 @@
+import { RiUserHeartLine } from "react-icons/ri"
 import Button from "../parts/Botton"
 
 export const Blog = () => {
@@ -8,8 +9,17 @@ export const Blog = () => {
         <p className="text-center text-gray-600 max-w-4xl mx-auto">
           技術ブログのリンクを表示します。
         </p>
-        <Button href="/blog" label="Blog">
-          <span>Blog</span>
-        </Button>
+        <div className="flex justify-center">
+          <Button
+            href="/blog"
+            variant="secondary"
+            className="mt-4 w-20"
+            icon={RiUserHeartLine}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          Details
+          </Button>
+        </div>
     </>
 }

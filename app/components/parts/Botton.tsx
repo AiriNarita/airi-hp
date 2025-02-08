@@ -43,21 +43,23 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     // スタイルバリエーションの定義
     const variantClasses = {
-        default: `
-        bg-white/80 hover:bg-white 
-        text-primary 
-        border border-primary/10 hover:border-primary/20
-        `,
-        primary: `
-        bg-primary/90 
-        text-white 
-        hover:bg-primary/80
-        `,
-        secondary: `
-        bg-primary/5 
-        text-primary 
-        hover:bg-primary/10
-        `
+      default: `
+      bg-background-light hover:bg-background
+      text-white
+      border border-content/20 hover:border-content/40
+      shadow-custom
+      `,
+      primary: `
+      bg-primary hover:bg-primary-light
+      text-slate-900 
+      shadow-custom
+      `,
+      secondary: `
+      bg-slate-700/80 hover:bg-slate-600/90
+      text-white font-medium
+      border border-slate-500/30 hover:border-slate-400/50
+      shadow-custom
+      `
     };
 
   // 基本スタイルの定義
