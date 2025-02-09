@@ -1,4 +1,8 @@
+'use client';
+
+import { use, useState } from 'react';
 import Link from 'next/link';
+import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { NAVIGATION_ITEMS } from './constants/navigation';
 
 /**
@@ -6,25 +10,66 @@ import { NAVIGATION_ITEMS } from './constants/navigation';
  * ナビゲーションバー
  */
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="absolute top-0 w-full z-10">
-      <nav className="flex justify-between items-center px-8 py-4">
-        <a href="/">
-          <div className="text-3xl font-bold text-white">Airi&apos;s Dev Nook</div> 
-        </a>
-        <ul className="flex space-x-6">
-          {NAVIGATION_ITEMS.map((item: { label: string; href: string }) => (
-            <li key={item.label}>
+    <header className="sticky top-0 z-50 bg-slate-800/95 shadow-lg">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          {/* ロゴ */}
+          <Link href="/" className="text-white text-xl font-bold">
+            Airi&apos;s Dev Nook
+          </Link>
+
+          {/* デスクトップメニュー */}
+          <nav className="hidden md:flex space-x-8">
+            {NAVIGATION_ITEMS.map((item: { label: string; href: string }) => (
               <Link
+                key={item.label}
                 href={item.href}
-                className="text-white text-lg hover:text-[#FFD54F] transition duration-300"
+                className="text-white hover:text-primary"
               >
                 {item.label}
               </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+            ))}
+          </nav>
+
+          {/* ハンバーガーメニューボタン */}
+          <button
+            className="md:hidden text-white p-2"
+            onClick={toggleMenu}
+            aria-label="メニュー"
+          >
+            {isMenuOpen ? (
+              <RiCloseLine className="h-6 w-6" />
+            ) : (
+              <RiMenu3Line className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+
+        {/* モバイルメニュー */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <nav className="flex flex-col space-y-4 py-4">
+              {NAVIGATION_ITEMS.map((item: { label: string; href: string }) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-white hover:text-primary px-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
+      </div>
     </header>
   );
 }; 
