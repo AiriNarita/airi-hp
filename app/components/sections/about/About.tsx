@@ -36,7 +36,7 @@ export const About = () => {
           <Button 
             href="/about"
             variant="secondary"
-            className="mt-4 w-20"
+            className="mt-4 w-32"
             icon={RiUserHeartLine}
             target="_blank"
             rel="noopener noreferrer"
