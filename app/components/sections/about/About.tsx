@@ -5,7 +5,7 @@ import { RiCodeSSlashLine, RiTeamLine, RiUserHeartLine } from "react-icons/ri";
 export const About = () => {
     return <>
         <h2 className={`${styles.heading.base} ${styles.heading.primary}`}>
-          About Me
+        Life is all about challenges.
         </h2>
         <p className={styles.paragraph}>
           このセクションには自己紹介を書きます。
