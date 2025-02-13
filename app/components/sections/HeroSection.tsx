@@ -25,6 +25,10 @@ export const HeroSection = () => {
               </Link>
             ))}
           </div>
+          <h2 className="text-5xl font-bold text-white mt-8 ">
+             ~ Life is all about challenges. ~
+          </h2>
+
         </div>
   </div>;
   </>
