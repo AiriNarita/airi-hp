@@ -10,7 +10,7 @@ export const Blog = () => {
         <p className="text-center text-gray-200 max-w-4xl mx-auto mb-8">
           技術ブログのリンクを表示します。
         </p>
-        <Zenn />
+        <Zenn showDetail={false}/>
         <div className="flex justify-center">
           <Button
             href="/blog"

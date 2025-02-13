@@ -8,7 +8,11 @@ interface Article {
   pubDate: string;
 }
 
-export default function Zenn() {
+interface ZennProps {
+  showDetail?: boolean;  // 詳細表示のフラグを追加
+}
+
+export default function Zenn({ showDetail = false }: ZennProps) {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +63,9 @@ export default function Zenn() {
             <p className="text-gray-300 text-sm">
               {new Date(article.pubDate).toLocaleDateString('ja-JP')}
             </p>
-            <p className="mt-2 text-gray-200">{article.description}</p>
+            {showDetail && (
+              <p className="mt-2 text-gray-200">{article.description}</p>
+            )}
           </li>
         ))}
       </ul>
