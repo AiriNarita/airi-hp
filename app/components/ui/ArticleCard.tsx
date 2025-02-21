@@ -13,9 +13,9 @@ interface ArticleListProps {
 
 export function ArticleList({ title, articles, showDetail = false }: ArticleListProps) {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div>
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
-      <ul className="space-y-6">
+      <ul className="space-y-4">
         {articles.map((article, index) => (
           <li key={index}>
             <a 

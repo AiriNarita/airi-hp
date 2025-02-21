@@ -27,15 +27,21 @@ export const Header = () => {
 
           {/* デスクトップメニュー */}
           <nav className="hidden md:flex space-x-8">
-            {NAVIGATION_ITEMS.map((item: { label: string; href: string }) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-white hover:text-primary"
-              >
-                {item.label}
-              </Link>
-            ))}
+            <a href="/#about" className="text-white hover:text-primary-light">
+              About
+            </a>
+            <a href="/#skills" className="text-white hover:text-primary-light">
+              Skills
+            </a>
+            <a href="/#works" className="text-white hover:text-primary-light">
+              Works
+            </a>
+            <a href="/#contact" className="text-white hover:text-primary-light">
+              Contact
+            </a>
+            <a href="/blog" className="text-white hover:text-primary-light">
+              Blog
+            </a>
           </nav>
 
           {/* ハンバーガーメニューボタン */}
