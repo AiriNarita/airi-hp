@@ -28,19 +28,19 @@ export const Header = () => {
           {/* デスクトップメニュー */}
           <nav className="hidden md:flex space-x-8">
             <a href="/#about" className="text-white hover:text-primary-light">
-              About
+              About Me
             </a>
-            <a href="/#skills" className="text-white hover:text-primary-light">
-              Skills
+            <a href="/#portfolio" className="text-white hover:text-primary-light">
+              Portfolio
             </a>
-            <a href="/#works" className="text-white hover:text-primary-light">
-              Works
+            <a href="/#blog" className="text-white hover:text-primary-light">
+              Blog
+            </a>
+            <a href="/bookshelf" className="text-white hover:text-primary-light">
+              Book shelf
             </a>
             <a href="/#contact" className="text-white hover:text-primary-light">
               Contact
-            </a>
-            <a href="/blog" className="text-white hover:text-primary-light">
-              Blog
             </a>
           </nav>
 
