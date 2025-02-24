@@ -10,7 +10,7 @@ export const NAVIGATION_ITEMS = [
   { label: "About Me", href: "#about" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Blog", href: "#blog" },
-  { label: "Book Shelf", href: "#bookshelf" },
+  { label: "Book Shelf", href: "#book" },
   { label: "Contact", href: "#contact" }
 ];
 
