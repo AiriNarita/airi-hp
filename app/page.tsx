@@ -1,7 +1,5 @@
-import { Header } from './components/Header';
-import { FloatingButtons } from './components/parts/FloatingButtons';
+
 import { metadata } from './metadata';
-import { Footer } from './components/Footer';
 import { Section } from './components/Section';
 
 /* メタデータ */

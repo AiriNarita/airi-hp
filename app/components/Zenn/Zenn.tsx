@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { ArticleList } from '../ui/ArticleCard';
 
-interface Article {
+interface ZennArticle {
   title: string;
   link: string;
   description: string;
@@ -10,11 +10,11 @@ interface Article {
 }
 
 interface ZennProps {
-  showDetail?: boolean;  // 詳細表示のフラグを追加
+  showDetail?: boolean;
 }
 
 export default function Zenn({ showDetail = false }: ZennProps) {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<ZennArticle[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,20 +45,39 @@ export default function Zenn({ showDetail = false }: ZennProps) {
     fetchArticles();
   }, []);
 
-  if (loading) return <div className="text-white text-center">Loading...</div>;
+  if (loading) return <div className="text-slate-600 text-center">Loading...</div>;
 
   const formattedArticles = articles.slice(0, 3).map(article => ({
     title: article.title,
     link: article.link,
     date: new Date(article.pubDate).toLocaleDateString('ja-JP'),
-    description: article.description
+    description: article.description,
+    image: "/images/zenn-placeholder.jpg",
+    excerpt: article.description.slice(0, 150) + "...",
+    readTime: "5"
   }));
 
   return (
-    <ArticleList 
-      title="最新のZenn記事"
-      articles={formattedArticles}
-      showDetail={showDetail}
-    />
+    <div className="space-y-4">
+      {formattedArticles.map((article, index) => (
+        <a
+          key={index}
+          href={article.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <h3 className="text-lg font-semibold text-slate-800 mb-2">
+            {article.title}
+          </h3>
+          <p className="text-slate-600 text-sm mb-2 line-clamp-2">
+            {article.description}
+          </p>
+          <div className="text-slate-500 text-sm">
+            {article.date}
+          </div>
+        </a>
+      ))}
+    </div>
   );
 }

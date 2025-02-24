@@ -17,7 +17,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-800/95 shadow-lg">
+    <header className="sticky top-0 z-50 bg-slate-800/95 shadow-lg z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* ロゴ */}

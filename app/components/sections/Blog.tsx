@@ -1,55 +1,48 @@
-import { RiUserHeartLine } from "react-icons/ri"
-import Button from "../parts/Botton"
-import Zenn from "../Zenn/Zenn"
+import { SectionTitle } from '../ui/SectionTitle'
+import { typography } from '@/app/styles/typography'
 import { ArticleList } from '../ui/ArticleCard'
+import Zenn from "../Zenn/Zenn"
+import { personalBlogArticles } from '../mock/mockPersonalBlogArticle'
 
 export const Blog = () => {
-    return <>
-        <h2 className="text-3xl font-bold text-center mb-8 text-[#FFD54F]">
-          Blog
-        </h2>
-        <p className="text-center text-gray-900 max-w-4xl mx-auto mb-8">
-          技術ブログのリンクを表示します。
-        </p>
-        <div className="flex flex-col md:flex-row gap-8 justify-between">
-            <div className="flex-1">
-                <Zenn showDetail={false}/>
+
+    return (
+        <>
+            <SectionTitle 
+                title="Blog"
+                subtitle="技術的な知見や開発プロセスについての記事をお届けします"
+            />
+            
+            <div className="grid md:grid-cols-2 gap-12">
+                {/* Zennブログ */}
+                <div>
+                    <h3 className={`${typography.heading.secondary} mb-6`}>Zenn Posts</h3>
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
+                        <Zenn showDetail={false}/>
+                    </div>
+                </div>
+
+                {/* 個人ブログ */}
+                <div>
+                    <h3 className={`${typography.heading.secondary} mb-6`}>Personal Blog</h3>
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
+                        <ArticleList 
+                            title=""
+                            articles={personalBlogArticles}
+                        />
+                    </div>
+                </div>
             </div>
-            {/* モックカードだよん */}
-            <div className="flex-1">
-                <ArticleList 
-                    title="個人ブログ"
-                    articles={[
-                        {
-                            title: "Next.jsでポートフォリオサイトを作成してみた",
-                            date: "2024-03-20",
-                            link: "#"
-                        },
-                        {
-                            title: "TypeScriptの型システムについて理解を深める",
-                            date: "2024-03-15",
-                            link: "#"
-                        },
-                        {
-                            title: "Reactのカスタムフックスとベストプラクティス",
-                            date: "2024-03-10",
-                            link: "#"
-                        }
-                    ]}
-                />
+
+            {/* もっと見るボタン */}
+            <div className="flex justify-center mt-12">
+                <a
+                    href="/blog"
+                    className="px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors duration-200"
+                >
+                    記事をもっと見る
+                </a>
             </div>
-        </div>
-        <div className="flex justify-center">
-          <Button
-            href="/blog"
-            variant="secondary"
-            className="mt-8 w-28"
-            icon={RiUserHeartLine}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Details
-          </Button>
-        </div>
-    </>
+        </>
+    )
 }

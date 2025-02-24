@@ -1,8 +1,14 @@
+import { typography } from '@/app/styles/typography'
+import Link from 'next/link'
+
 interface Article {
   title: string;
   link: string;
   date: string;
   description?: string;
+  image: string;
+  excerpt: string;
+  readTime: string;
 }
 
 interface ArticleListProps {
@@ -18,20 +24,35 @@ export function ArticleList({ title, articles, showDetail = false }: ArticleList
       <ul className="space-y-4">
         {articles.map((article, index) => (
           <li key={index}>
-            <a 
+            <Link 
               href={article.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="block bg-slate-700/80 rounded-lg shadow p-4 hover:bg-slate-600/80 transition-colors"
+              className="block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
             >
-              <h2 className="text-lg font-semibold text-primary hover:text-primary-light">
-                {article.title}
-              </h2>
-              <p className="text-gray-300 text-sm">{article.date}</p>
-              {showDetail && article.description && (
-                <p className="mt-2 text-gray-200">{article.description}</p>
-              )}
-            </a>
+              <div className="aspect-video relative">
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className={`${typography.heading.secondary} line-clamp-2`}>
+                  {article.title}
+                </h3>
+                <p className={`${typography.body.secondary} mt-2 line-clamp-3`}>
+                  {article.excerpt}
+                </p>
+                <div className="flex items-center mt-4">
+                  <span className={typography.body.small}>
+                    {article.date}
+                  </span>
+                  <span className="mx-2 text-slate-300">•</span>
+                  <span className={typography.body.small}>
+                    {article.readTime} min read
+                  </span>
+                </div>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
