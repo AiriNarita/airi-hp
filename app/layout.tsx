@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className ="absolute inset-0 bg-neutral-900 bg-opacity-50">
+      <body className="bg-slate-50">
         <div className="flex flex-col min-h-screen">
           <Header />
           <FloatingButtons />
