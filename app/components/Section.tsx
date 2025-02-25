@@ -4,7 +4,8 @@ import { Blog } from "./sections/Blog"
 import { Book } from "./sections/Book"
 import { Contact } from "./sections/Contact"
 import { HeroSection } from "./sections/HeroSection"
-import { Portfolio } from "./sections/Portforio"
+import { Portfolio } from "./sections/Portfolio"
+
 
 /**
  * セクション

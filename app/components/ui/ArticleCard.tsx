@@ -29,11 +29,6 @@ export function ArticleList({ title, articles, showDetail = false }: ArticleList
               className="block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               <div className="aspect-video relative">
-                <img 
-                  src={article.image} 
-                  alt={article.title}
-                  className="object-cover w-full h-full"
-                />
               </div>
               <div className="p-6">
                 <h3 className={`${typography.heading.secondary} line-clamp-2`}>
@@ -45,10 +40,6 @@ export function ArticleList({ title, articles, showDetail = false }: ArticleList
                 <div className="flex items-center mt-4">
                   <span className={typography.body.small}>
                     {article.date}
-                  </span>
-                  <span className="mx-2 text-slate-300">•</span>
-                  <span className={typography.body.small}>
-                    {article.readTime} min read
                   </span>
                 </div>
               </div>

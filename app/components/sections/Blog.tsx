@@ -25,11 +25,11 @@ export const Blog = () => {
                 {/* 個人ブログ */}
                 <div>
                     <h3 className={`${typography.heading.secondary} mb-6`}>Personal Blog</h3>
-                    <div className="bg-white rounded-lg p-6 shadow-sm">
-                        <ArticleList 
-                            title=""
-                            articles={personalBlogArticles}
-                        />
+                    <div className="bg-white p-6 shadow-sm">
+                      <ArticleList 
+                        title=""
+                        articles={personalBlogArticles}
+                      />
                     </div>
                 </div>
             </div>
