@@ -3,22 +3,18 @@ import { SectionTitle } from "../ui/SectionTitle"
 
 export const Book = () => {
     return <>
-      
         <SectionTitle
           title="Airiの本棚"
           subtitle="私の本棚"
         />
-        <div className="flex justify-center">
-          <Button
-              href="/book"
-              variant="secondary"
-              className="mt-4 w-32"
-              // icon={}
-              target="_blank"
-              rel="noopener noreferrer"
+        {/* もっと見るボタン */}
+        <div className="flex justify-center mt-12">
+            <a
+              href="/blog"
+              className="px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors duration-200"
             >
-            Details
-          </Button>
+              もっと見る
+            </a>
         </div>
 
     </>
