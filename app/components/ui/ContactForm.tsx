@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react'
 
 export const ContactForm = () => {
@@ -7,11 +8,32 @@ export const ContactForm = () => {
         email: '',
         message: ''
     })
+    const [status, setStatus] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        // ここにフォーム送信のロジックを実装
-        console.log('Form submitted:', formData)
+        setIsLoading(true)
+        setStatus(null)
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            })
+
+            if (response.ok) {
+                setStatus('送信が完了しました！')
+                setFormData({ name: '', email: '', message: '' }) // フォームをリセット
+            } else {
+                setStatus('エラーが発生しました。もう一度お試しください。')
+            }
+        } catch (error) {
+            setStatus('エラーが発生しました。もう一度お試しください。')
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -24,22 +46,24 @@ export const ContactForm = () => {
                     type="text"
                     id="name"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4FC3F7] focus:ring-[#4FC3F7]"
                     required
                 />
             </div>
             <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    メールアドレス
+                    あなたのメールアドレス
                 </label>
                 <input
                     type="email"
                     id="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4FC3F7] focus:ring-[#4FC3F7]"
                     required
+                    pattern="^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="正しいメールアドレスを入力してください"
                 />
             </div>
             <div>
@@ -50,17 +74,24 @@ export const ContactForm = () => {
                     id="message"
                     rows={4}
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4FC3F7] focus:ring-[#4FC3F7]"
                     required
+                    minLength={10}
                 />
             </div>
             <button
                 type="submit"
-                className="w-full bg-[#4FC3F7] text-white py-2 px-4 rounded-md hover:bg-[#3BA9DD] transition-colors"
+                className={`w-full text-white py-2 px-4 rounded-md transition-colors ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#4FC3F7] hover:bg-[#3BA9DD]'}`}
+                disabled={isLoading}
             >
-                送信する
+                {isLoading ? '送信中...' : '送信する'}
             </button>
+            {status && (
+                <p className={`text-sm mt-2 ${status.includes('完了') ? 'text-green-600' : 'text-red-600'}`}>
+                    {status}
+                </p>
+            )}
         </form>
     )
-} 
+}

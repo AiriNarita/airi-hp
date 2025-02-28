@@ -1,4 +1,4 @@
-import { FaEnvelope, FaGithub, FaTwitter } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 export const ContactDetails = () => {
     const contactInfo = [
@@ -11,14 +11,14 @@ export const ContactDetails = () => {
         {
             icon: <FaGithub className="w-6 h-6" />,
             label: 'GitHub',
-            value: '@yourusername',
-            link: 'https://github.com/yourusername'
+            value: 'AiriNarita',
+            link: 'https://github.com/AiriNarita'
         },
         {
-            icon: <FaTwitter className="w-6 h-6" />,
-            label: 'Twitter',
-            value: '@yourusername',
-            link: 'https://twitter.com/yourusername'
+            icon: <FaLinkedin className="w-6 h-6" />,
+            label: 'LinkedIn',
+            value: 'AiriNarita',
+            link: 'https://www.linkedin.com/in/airinarita/'
         }
     ]
 
@@ -28,7 +28,6 @@ export const ContactDetails = () => {
                 <h3 className="text-xl font-semibold mb-4">お問い合わせ</h3>
                 <p className="text-gray-600">
                     お仕事のご依頼やご質問など、お気軽にお問い合わせください。
-                    通常2-3営業日以内にご返信いたします。
                 </p>
             </div>
             
