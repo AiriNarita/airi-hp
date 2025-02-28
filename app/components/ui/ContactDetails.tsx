@@ -4,9 +4,9 @@ export const ContactDetails = () => {
     const contactInfo = [
         {
             icon: <FaEnvelope className="w-6 h-6" />,
-            label: 'メール',
-            value: 'your.email@example.com',
-            link: 'mailto:your.email@example.com'
+            label: 'Gmail',
+            value: 'airinarita.dev@gmail.com',
+            link: 'airinarita.dev@gmail.com'
         },
         {
             icon: <FaGithub className="w-6 h-6" />,
