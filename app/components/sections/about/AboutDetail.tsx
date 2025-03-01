@@ -54,17 +54,17 @@ export const AboutDetail = () => {
     {
       year: '2021',
       title: 'プログラミングとの出会い',
-      description: '医療現場でのデジタル化の遅れを感じ、自ら解決策を模索する中でプログラミングに出会う。独学でJavaやKotlinの基礎を習得。'
+      description: '医療現場でのデジタル化の遅れを感じ、自ら解決策を模索する中でプログラミングに出会う。最初はエンジニアの夫にも教わりながら独学し、DMM WEBCAMPへ通い学ぶ。'
     },
     {
       year: '2022',
       title: 'エンジニアへの転身',
-      description: 'バックエンドエンジニアとしてキャリアをスタート。医療知識とITスキルを融合させた新しい挑戦が始まる。'
+      description: 'エンジニアとしてキャリアをteamLabにてスタート。'
     },
     {
       year: '2023',
       title: '現在の活動',
-      description: 'Kotlin & Spring Bootをメインに、バックエンド開発を担当。同時にフロントエンド技術やインフラ構築にも挑戦し、フルスタックエンジニアを目指して日々学習中。'
+      description: 'Kotlin & Spring Bootをメインに、バックエンド開発を担当。同時にフロントエンド技術やインフラ構築にも挑戦し、専門性を持ちながらも広い知識を持つよう日々学習中。'
     }
   ];
 
@@ -154,16 +154,15 @@ export const AboutDetail = () => {
                 <span>バックエンドエンジニア</span>
               </li>
               <li className="flex items-center">
-                <span className="font-semibold w-24">経験:</span>
-                <span>エンジニア 2年目</span>
-              </li>
-              <li className="flex items-center">
                 <span className="font-semibold w-24">前職:</span>
                 <span>鍼灸師・柔道整復師</span>
               </li>
               <li className="flex items-center">
                 <span className="font-semibold w-24">資格:</span>
-                <span>鍼師、灸師、柔道整復師</span>
+                <span>鍼師、灸師、柔道整復師<br />
+                AWS CloudPractitioner<br />
+                基本情報技術者 (25年3月取得予定)
+                </span>
               </li>
             </ul>
           </div>
