@@ -35,7 +35,7 @@ export const Footer = () => {
                     <div className="space-y-4">
                         <h2 className="text-xl font-bold text-slate-800">Airi&apos;s Dev Nook</h2>
                         <p className="text-slate-600 text-sm leading-relaxed">
-                            フロントエンド開発とUI/UXデザインに情熱を注ぐ開発者のポートフォリオサイトです。
+                            元鍼灸師・柔道整復師の<br/>好奇心の塊なバックエンドエンジニア
                         </p>
                     </div>
 
