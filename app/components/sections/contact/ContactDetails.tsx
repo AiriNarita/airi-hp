@@ -1,23 +1,23 @@
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 export const ContactDetails = () => {
     const contactInfo = [
         {
-            icon: <FaEnvelope className="w-6 h-6" />,
+            icon: <FaEnvelope className="w-6 h-6 text-black" />,
             label: 'Gmail',
             value: 'airinarita.dev@gmail.com',
             link: 'airinarita.dev@gmail.com'
         },
         {
-            icon: <FaGithub className="w-6 h-6" />,
+            icon: <FaGithub className="w-6 h-6 text-black" />,
             label: 'GitHub',
-            value: 'AiriNarita',
+            value: 'github.com/AiriNarita',
             link: 'https://github.com/AiriNarita'
         },
         {
-            icon: <FaLinkedin className="w-6 h-6" />,
+            icon: <FaLinkedin className="w-6 h-6 text-black" />,
             label: 'LinkedIn',
-            value: 'AiriNarita',
+            value: 'linkedin.com/in/airinarita/',
             link: 'https://www.linkedin.com/in/airinarita/'
         }
     ]

@@ -1,6 +1,6 @@
-import { ContactDetails } from '../ui/ContactDetails'
-import { ContactForm } from '../ui/ContactForm'
-import { SectionTitle } from '../ui/SectionTitle'
+import { ContactDetails } from './ContactDetails'
+import { ContactForm } from './ContactForm'
+import { SectionTitle } from '../../ui/SectionTitle'
 
 /**
  * コンタクトページ

@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 
+/**
+ * コンタクト　メール送信フォーム
+ */
 export const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -77,7 +80,8 @@ export const ContactForm = () => {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4FC3F7] focus:ring-[#4FC3F7]"
                     required
-                    minLength={10}
+                    minLength={20}
+                    placeholder="20文字以上でお書きください. Please write at least 20 characters."
                 />
             </div>
             <button
