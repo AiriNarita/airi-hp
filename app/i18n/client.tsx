@@ -12,6 +12,7 @@ import {
   initReactI18next,
   useTranslation as useTranslationOrigin,
 } from 'react-i18next';
+import resourcesToBackend from 'i18next-resources-to-backend';
 
 import { getOptions } from './settings';
 

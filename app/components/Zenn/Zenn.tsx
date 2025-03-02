@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { ArticleList } from '../ui/ArticleCard';
+
 
 interface ZennArticle {
   title: string;
