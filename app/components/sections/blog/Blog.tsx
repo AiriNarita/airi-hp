@@ -1,8 +1,8 @@
-import { SectionTitle } from '../ui/SectionTitle'
+import { SectionTitle } from '../../ui/SectionTitle'
 import { typography } from '@/app/styles/typography'
-import { ArticleList } from '../ui/ArticleCard'
-import Zenn from "../Zenn/Zenn"
-import { personalBlogArticles } from '../mock/mockPersonalBlogArticle'
+import { ArticleList } from '../../ui/ArticleCard'
+import Zenn from "./Zenn/Zenn"
+import { personalBlogArticles } from '../../mock/mockPersonalBlogArticle'
 
 export const Blog = () => {
 
