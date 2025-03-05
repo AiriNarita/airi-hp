@@ -1,11 +1,33 @@
-import ArticleEditor from '@/app/components/sections/blog/ArticleEditor';
+import { notFound } from 'next/navigation';
 
-export default function NewArticlePage() {
+async function getArticle(id: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/${id}`, {
+    cache: 'no-store'
+  });
+  
+  if (!res.ok) {
+    return null;
+  }
+  
+  return res.json();
+}
+
+export default async function EditArticlePage({
+  params
+}: {
+  params: { id: string }
+}) {
+  const article = await getArticle(params.id);
+  
+  if (!article) {
+    notFound();
+  }
+
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">新規記事作成</h1>
+      <h1 className="text-3xl font-bold mb-6">記事の編集</h1>
       
-      <form action="/api/articles" method="POST" className="max-w-2xl">
+      <form action={`/api/articles/${params.id}`} method="POST" className="max-w-2xl">
         <div className="mb-4">
           <label htmlFor="title" className="block text-sm font-medium text-gray-700">
             タイトル
@@ -14,6 +36,7 @@ export default function NewArticlePage() {
             type="text"
             name="title"
             id="title"
+            defaultValue={article.title}
             required
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -27,6 +50,7 @@ export default function NewArticlePage() {
             name="content"
             id="content"
             rows={10}
+            defaultValue={article.content}
             required
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -40,6 +64,7 @@ export default function NewArticlePage() {
             type="url"
             name="imageUrl"
             id="imageUrl"
+            defaultValue={article.imageUrl}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -56,7 +81,7 @@ export default function NewArticlePage() {
             type="submit"
             className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700"
           >
-            作成
+            保存
           </button>
         </div>
       </form>
