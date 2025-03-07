@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import ArticleActions from '@/app/components/ArticleActions';
 
 async function getArticles() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, {
@@ -60,27 +61,7 @@ export default async function AdminArticlesPage() {
                   {new Date(article.createdAt).toLocaleDateString('ja-JP')}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <Link
-                    href={`/admin/articles/${article.id}/edit`}
-                    className="text-indigo-600 hover:text-indigo-900 mr-4"
-                  >
-                    編集
-                  </Link>
-                  <button
-                    onClick={async () => {
-                      if (confirm('本当に削除しますか？')) {
-                        const res = await fetch(`/api/articles/${article.id}`, {
-                          method: 'DELETE',
-                        });
-                        if (res.ok) {
-                          window.location.reload();
-                        }
-                      }
-                    }}
-                    className="text-red-600 hover:text-red-900"
-                  >
-                    削除
-                  </button>
+                  <ArticleActions articleId={article.id} />
                 </td>
               </tr>
             ))}
