@@ -1,4 +1,4 @@
-import { AdminArticleList } from '@/app/components/sections/articles/admin/AdminArticleList';
+import { AdminArticleList } from '@/app/admin/articles/AdminArticleList';
 
 /**
  * admin　記事一覧取得

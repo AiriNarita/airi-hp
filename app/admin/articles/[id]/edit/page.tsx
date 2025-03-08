@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import EditArticleForm from '../../../../components/sections/articles/admin/AdminEditArticleForm';
+import EditArticleForm from '../../admin/AdminEditArticleForm';
 
 async function getArticle(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/articles/${id}`, {

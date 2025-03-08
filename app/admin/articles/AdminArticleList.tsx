@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import ArticleActions from "@/app/components/sections/articles/admin/AdminArticleActions";
+import ArticleActions from "@/app/admin/articles/AdminArticleActions";
 
 /**
  * Admin 管理者ページ　記事
