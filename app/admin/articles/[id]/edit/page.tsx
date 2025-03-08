@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import EditArticleForm from '../../admin/AdminEditArticleForm';
+import EditArticleForm from './EditArticleForm';
 
 async function getArticle(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/articles/${id}`, {
@@ -24,10 +24,5 @@ export default async function EditArticlePage({
     notFound();
   }
 
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">記事の編集</h1>
-      <EditArticleForm article={article} />
-    </div>
-  );
+  return <EditArticleForm article={article} />;
 } 

@@ -1,11 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { InputField, TextArea } from './components/FormElements';
-import { Button } from './components/Button';
-import { AdminPageLayout } from './components/AdminPageLayout';
+import { Article } from '../../AdminArticleList';
+import { InputField, TextArea } from '../../components/FormElements';
+import { Button } from '../../components/Button';
+import { AdminPageLayout } from '../../components/AdminPageLayout';
 
-export default function AdminNewArticlePage() {
+interface EditArticleFormProps {
+  article: Article;
+}
+
+export default function EditArticleForm({ article }: EditArticleFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -46,8 +51,8 @@ export default function AdminNewArticlePage() {
     };
 
     try {
-      const response = await fetch('/api/admin/articles', {
-        method: 'POST',
+      const response = await fetch(`/api/admin/articles/${article.id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -60,24 +65,25 @@ export default function AdminNewArticlePage() {
       } else {
         // エラーハンドリング
         const errorData = await response.json();
-        alert(errorData.message || '記事の作成に失敗しました');
+        alert(errorData.message || '記事の更新に失敗しました');
       }
     } catch (error) {
-      console.error('Error creating article:', error);
-      alert('記事の作成中にエラーが発生しました');
+      console.error('Error updating article:', error);
+      alert('記事の更新中にエラーが発生しました');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <AdminPageLayout title="新規記事作成" backButton>
+    <AdminPageLayout title="記事の編集" backButton>
       <form onSubmit={handleSubmit} className="max-w-2xl bg-white p-6 rounded-lg shadow-md">
         <InputField
           label="タイトル"
           id="title"
           name="title"
           type="text"
+          defaultValue={article.title}
           required
           error={errors.title}
         />
@@ -87,6 +93,7 @@ export default function AdminNewArticlePage() {
           id="content"
           name="content"
           rows={10}
+          defaultValue={article.content || article.markdown}
           required
           error={errors.content}
         />
@@ -96,6 +103,7 @@ export default function AdminNewArticlePage() {
           id="imageUrl"
           name="imageUrl"
           type="url"
+          defaultValue={article.imageUrl || ''}
           error={errors.imageUrl}
         />
 
@@ -109,13 +117,13 @@ export default function AdminNewArticlePage() {
           </Button>
           <Button
             type="submit"
-            variant="success"
+            variant="primary"
             isLoading={isSubmitting}
           >
-            作成
+            保存
           </Button>
         </div>
       </form>
     </AdminPageLayout>
   );
-}
+} 
