@@ -1,6 +1,6 @@
 import { styles } from "../styles/common"
 import { About } from "./sections/about/About"
-import { Blog } from "./sections/blog/Blog"
+import { Blog } from "./sections/articles/Blog"
 import { Book } from "./sections/Book"
 import { Contact } from "./sections/contact/Contact"
 import { HeroSection } from "./sections/HeroSection"
