@@ -1,4 +1,4 @@
-import Zenn from '@/app/components/Zenn/Zenn';
+import Zenn from '@/app/components/sections/articles/Zenn/Zenn';
 import { BackLink } from '@/app/components/ui/BackLink'
 
 export default function BlogPage() {
