@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 
+// ログイン状態変更イベント名（login/page.tsxと同じ値にする）
+const LOGIN_EVENT = 'admin_login_state_changed';
+
 export default function AdminHeader() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -11,11 +14,28 @@ export default function AdminHeader() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   
-  // 初期化時にログイン状態をチェック
+  // 初期化時とパスが変わったときにログイン状態をチェック
   useEffect(() => {
-    console.log('AdminHeader: Checking login state on mount');
+    console.log('AdminHeader: Checking login state on path change:', pathname);
     checkLoginState();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+  
+  // ログイン状態変更イベントをリッスン
+  useEffect(() => {
+    const handleLoginStateChange = (event: CustomEvent) => {
+      console.log('Login state change event received:', event.detail);
+      const { isLoggedIn: newLoginState } = event.detail;
+      setIsLoggedIn(newLoginState);
+    };
+    
+    // イベントリスナーを追加
+    window.addEventListener(LOGIN_EVENT, handleLoginStateChange as EventListener);
+    
+    // クリーンアップ関数
+    return () => {
+      window.removeEventListener(LOGIN_EVENT, handleLoginStateChange as EventListener);
+    };
   }, []);
   
   // ログイン状態を確認する関数
@@ -28,7 +48,6 @@ export default function AdminHeader() {
       
       // クッキーの存在も確認
       const allCookies = document.cookie;
-      console.log('All cookies:', allCookies);
       
       // admin_sessionクッキーを探す
       const hasSessionCookie = allCookies.split(';').some(cookie => 
@@ -42,6 +61,11 @@ export default function AdminHeader() {
       const newLoginState = isLoggedInLS || hasSessionCookie;
       console.log('New login state:', newLoginState);
       
+      // 状態が変わった場合のみ更新
+      if (isLoggedIn !== newLoginState) {
+        setIsLoggedIn(newLoginState);
+      }
+      
       // 未ログイン状態なのに管理者ページにアクセスしようとしている場合
       if (!newLoginState && pathname.startsWith('/admin') && pathname !== '/admin/login') {
         console.log('Not logged in, redirecting to login page');
@@ -50,8 +74,6 @@ export default function AdminHeader() {
         router.push('/admin/login');
         return;
       }
-      
-      setIsLoggedIn(newLoginState);
     } catch (error) {
       console.error('セッション確認エラー:', error);
       setIsLoggedIn(false);
@@ -71,6 +93,10 @@ export default function AdminHeader() {
     // 状態を更新
     setIsLoggedIn(false);
     
+    // ログアウト状態変更イベントを発行
+    const event = new CustomEvent(LOGIN_EVENT, { detail: { isLoggedIn: false } });
+    window.dispatchEvent(event);
+    
     // ログアウトAPIを呼び出し（クライアントサイドのみ）
     router.push('/api/admin/logout');
   };
@@ -88,6 +114,11 @@ export default function AdminHeader() {
     localStorage.setItem('admin_logged_in', 'true');
     localStorage.setItem('admin_login_time', new Date().toISOString());
     setIsLoggedIn(true);
+    
+    // ログイン状態変更イベントを発行
+    const event = new CustomEvent(LOGIN_EVENT, { detail: { isLoggedIn: true } });
+    window.dispatchEvent(event);
+    
     console.log('Forced login state');
   };
   
@@ -126,25 +157,6 @@ export default function AdminHeader() {
               </>
             ) : (
               <>
-                <Link 
-                  href="/admin/login" 
-                  className="bg-green-500 px-3 py-1 rounded hover:bg-green-600"
-                >
-                  ログイン
-                </Link>
-                {/* デバッグ用ボタン */}
-                <button
-                  onClick={checkLoginStatus}
-                  className="ml-2 text-xs underline"
-                >
-                  状態確認
-                </button>
-                <button
-                  onClick={forceLogin}
-                  className="ml-2 text-xs underline text-yellow-300"
-                >
-                  強制ログイン
-                </button>
               </>
             )}
           </nav>

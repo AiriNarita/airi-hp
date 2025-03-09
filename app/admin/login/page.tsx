@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Snackbar from '@/app/components/Snackbar';
 
+// カスタムイベントの定義
+const LOGIN_EVENT = 'admin_login_state_changed';
+
 export default function AdminLoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -21,6 +24,10 @@ export default function AdminLoginPage() {
     localStorage.removeItem('admin_logged_in');
     localStorage.removeItem('admin_login_time');
     console.log('Login page loaded, cleared local storage');
+    
+    // ログアウト状態のイベントを発行
+    const event = new CustomEvent(LOGIN_EVENT, { detail: { isLoggedIn: false } });
+    window.dispatchEvent(event);
   }, []);
 
   // URLパラメータからエラーメッセージを取得
@@ -72,15 +79,17 @@ export default function AdminLoginPage() {
         // クッキーが設定されたことを確認
         console.log('Cookies after login:', document.cookie);
         
+        // ログイン状態変更イベントを発行
+        const event = new CustomEvent(LOGIN_EVENT, { detail: { isLoggedIn: true } });
+        window.dispatchEvent(event);
+        
         setSnackbar({
           message: data.message || 'ログインに成功しました。リダイレクトします...',
           type: 'success'
         });
         
-        // 少し待ってからリダイレクト（クライアントサイドのみ）
-        setTimeout(() => {
-          router.push('/admin');
-        }, 1000);
+        // すぐにリダイレクト（クライアントサイドのみ）
+        router.push('/admin');
       } else {
         localStorage.removeItem('admin_logged_in');
         setSnackbar({
